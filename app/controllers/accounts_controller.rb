@@ -4,10 +4,9 @@ class AccountsController < ApplicationController
   end
   
   def create
-    @account = Account.new(params[:account])
-    @account.save!
+    @account = Account.find_or_create_by_email(params[:account])
     cookies.permanent[:account_id] = @account.id
-    flash[:notice] = "Account created!"
+    flash[:notice] = "Welcome #{@account.email}!"
     redirect_to todo_items_path
   end
 end

@@ -25,7 +25,6 @@
       %th Title
       %th Description
       %th Due date
-      %th Position
       %th 
   %tbody
     - @todos.each do |t|
@@ -40,7 +39,6 @@
               = t.title
         %td= t.description
         %td= t.due_date
-        %td= t.position
         %td
           - form_for t do |f|
             = hidden_field_tag "move", "down"
