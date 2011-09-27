@@ -22,6 +22,7 @@
 %table
   %thead
     %tr
+      %th Completed?
       %th Title
       %th Description
       %th Due date
@@ -32,17 +33,18 @@
         %td
           - form_for t do |f|
             = f.check_box :completed, :onchange => "this.form.submit();"
-            - if t.completed?
-              %strike
-                =t.title
-            - else
-              = t.title
-        %td= t.description
-        %td= t.due_date
         %td
-          - form_for t do |f|
-            = hidden_field_tag "move", "down"
-            = f.submit "Move down"
+          - if t.completed?
+            %strike
+              =t.title
+          - else
+            = t.title
+        %td= t.description
+        %td= t.due_date.to_s(:long)
+        %td
           - form_for t do |f|
             = hidden_field_tag "move", "up"
             = f.submit "Move up"
+          - form_for t do |f|
+            = hidden_field_tag "move", "down"
+            = f.submit "Move down"
