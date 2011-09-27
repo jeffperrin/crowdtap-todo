@@ -27,6 +27,8 @@ class TodoItemsController < ApplicationController
       @todo.save!
     end
     
+    @todo.update_attributes!(params[:todo_item])
+    
     redirect_to todo_items_path
   end
 

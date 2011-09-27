@@ -30,15 +30,21 @@
   %tbody
     - @todos.each do |t|
       %tr
-        %td= t.title
+        %td
+          - form_for t do |f|
+            = f.check_box :completed, :onchange => "this.form.submit();"
+            - if t.completed?
+              %strike
+                =t.title
+            - else
+              = t.title
         %td= t.description
         %td= t.due_date
         %td= t.position
         %td
           - form_for t do |f|
-            = hidden_field :move, "down"
+            = hidden_field_tag "move", "down"
             = f.submit "Move down"
           - form_for t do |f|
-            = hidden_field :move, "up"
+            = hidden_field_tag "move", "up"
             = f.submit "Move up"
-          
