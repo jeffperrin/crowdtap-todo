@@ -1,0 +1,33 @@
+%fieldset
+  %legend Create a new todo
+  - form_for @todo do |f|
+    -if @todo.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@todo.errors.count, "error")}"
+        %ul
+          - @todo.errors.full_messages.each do |msg|
+            %li= msg
+    %p
+      = f.label :title, "Title:"
+      = f.text_field :title
+    %p
+      = f.label :description, "Description:"
+      = f.text_area :description, :rows => 4, :cols => 75
+    %p
+      = f.label :due_date, "Due date:"
+      = f.date_select :due_date
+    %p
+      = f.submit "Create"
+%h2 Your todos
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Due date
+  %tbody
+    - @todos.each do |t|
+      %tr
+        %td= t.title
+        %td= t.description
+        %td= t.due_date

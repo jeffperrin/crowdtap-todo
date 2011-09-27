@@ -6,7 +6,8 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     @account.save!
+    cookies.permanent[:account_id] = @account.id
     flash[:notice] = "Account created!"
-    render :new
+    redirect_to todo_items_path
   end
 end

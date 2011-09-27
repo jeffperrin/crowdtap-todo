@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /^the account creation page$/
       '/accounts/new'
+    when /^the todo page$/
+      '/todo_items'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
