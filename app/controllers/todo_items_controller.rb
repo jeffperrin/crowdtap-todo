@@ -18,6 +18,17 @@ class TodoItemsController < ApplicationController
       render :index
     end
   end
+  
+  def update
+    @todo = TodoItem.find(params[:id])
+    if params[:move]
+      direction = params[:move]
+      direction == 'up' ? @todo.move_higher : @todo.move_lower
+      @todo.save!
+    end
+    
+    redirect_to todo_items_path
+  end
 
   private
     def authenticated?

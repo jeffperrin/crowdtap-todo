@@ -7,4 +7,3 @@ Feature: Todo creation
     And I press "Create"
     Then I should see "Todo was created"
     And I should see "This is my todo"
-    

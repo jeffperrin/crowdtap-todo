@@ -39,3 +39,4 @@ gem "jquery-rails", ">= 0.2.7"
 gem "launchy", ">= 0.4.0", :group => [:cucumber, :test]
 gem "rspec-rails", ">= 2.5.0", :group => [:cucumber, :development, :test]
 gem "spork", ">= 0.8.4", :group => [:cucumber, :test]
+gem "acts_as_list"
